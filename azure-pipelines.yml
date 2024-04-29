@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool: Madlab
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: HCLAppScanOnCloud@2
+  inputs:
+      AppSecTestService: 'ASoCProduction'
+      applications: 'c77eb298-9b34-4aef-801f-d404a6960f43'
+      scanname: 'PradeepYaml'
+      scantype: 'static'
+      scanMethod: 'IRX'
